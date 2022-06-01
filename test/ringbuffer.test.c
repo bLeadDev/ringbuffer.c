@@ -32,10 +32,8 @@ void it_should_report_the_correct_number_of_elements(void) {
 
 void it_should_not_exceed_its_maximum_nbOfElements(void) {
   //...
-	TEST_ASSERT_FALSE(true);
+  TEST_ASSERT_FALSE(true);
 }
-
-
 
 int main(void) {
   UnityBegin("RingBuffer");
@@ -44,7 +42,7 @@ int main(void) {
   RUN_TEST(an_empty_ring_should_have_nbOfElements_0);
   RUN_TEST(it_should_report_the_correct_number_of_elements);
   RUN_TEST(it_should_not_exceed_its_maximum_nbOfElements);
-	
+
   UnityEnd();
   return 0;
 }
