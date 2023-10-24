@@ -5,7 +5,10 @@
 
 typedef struct {
   int nbOfElements; // the number of elements currently stored in the ring
-  int *data;        // the actual ring buffer data
+  int maxNbOfElements;  //max Number of elements in the buffer
+  int *data;        // the actual ring buffer data, always is at the starting location
+  int offRead;       // offset for read pointer
+  int offWrite;      // offset for write pointer
 } RingBuffer;
 
 /*
