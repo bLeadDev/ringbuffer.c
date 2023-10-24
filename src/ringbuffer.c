@@ -42,15 +42,13 @@ void ring_delete(RingBuffer *buffer) {
 
 void ring_add(RingBuffer *buffer, int element) {
   buffer->nbOfElements += 1;
-  if(buffer->nbOfElements > buffer->maxNbOfElements){ //check if full
+  if(buffer->nbOfElements > buffer->maxNbOfElements){ 
     buffer->nbOfElements -= 1;
     return;
   }
   #ifdef DEBUG_MESSAGES_ON
   printf("Added element %d, Value %d\n", element, buffer->nbOfElements);
   #endif
-
-//add element and set new offset
   buffer->data[buffer->offWrite] = element;
   buffer->offWrite = (buffer->offWrite + 1) % buffer->maxNbOfElements;
 }
