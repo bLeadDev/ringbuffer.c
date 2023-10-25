@@ -42,9 +42,9 @@ void ring_delete(RingBuffer *buffer) {
 
 void ring_add(RingBuffer *buffer, int element) {
   buffer->nbOfElements += 1;
-  if(buffer->nbOfElements > buffer->maxNbOfElements){ 
+  if(buffer->nbOfElements > buffer->maxNbOfElements){ //overwrite last element
     buffer->nbOfElements -= 1;
-    return;
+    buffer->offRead = (buffer->offRead + 1) % buffer->maxNbOfElements;
   }
   #ifdef DEBUG_MESSAGES_ON
   printf("Added element %d, Value %d\n", element, buffer->nbOfElements);

@@ -117,6 +117,23 @@ void it_should_properly_free_the_allocated_space(void){
   TEST_ASSERT_NULL(buffer);
 }
 
+void it_should_overwrite_the_last_element_when_buffer_is_full(void){
+  ring_add(buffer, 1);
+  ring_add(buffer, 2);
+  ring_add(buffer, 3);
+  ring_add(buffer, 4);
+  ring_add(buffer, 5);
+
+  int retVal = 0;
+  ring_remove(buffer, &retVal);
+  TEST_ASSERT_EQUAL_INT(2, retVal);
+  ring_remove(buffer, &retVal);
+  TEST_ASSERT_EQUAL_INT(3, retVal);
+  ring_remove(buffer, &retVal);
+  TEST_ASSERT_EQUAL_INT(4, retVal);
+  ring_remove(buffer, &retVal);
+  TEST_ASSERT_EQUAL_INT(5, retVal);
+}
 
 int main(void) {
   UnityBegin("RingBuffer");
@@ -129,8 +146,8 @@ int main(void) {
   RUN_TEST(it_should_return_false_when_empty);
   RUN_TEST(it_should_return_true_when_element_was_successfully_returned);
   RUN_TEST(it_should_return_the_before_pushed_values_full_test);
-  //RUN_TEST(it_should_properly_free_the_allocated_space);
   RUN_TEST(it_should_write_in_a_circle_when_old_values_are_read);
+  RUN_TEST(it_should_overwrite_the_last_element_when_buffer_is_full);
 
   UnityEnd();
   return 0;
