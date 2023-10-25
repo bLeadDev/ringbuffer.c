@@ -110,13 +110,6 @@ void it_should_write_in_a_circle_when_old_values_are_read(void) {
   TEST_ASSERT_EQUAL_INT(6, retVal);
 }
 
-void it_should_properly_free_the_allocated_space(void){
-  return;
-  //Just Checking for nullptr, free cannot be checked
-  ring_delete(buffer);
-  TEST_ASSERT_NULL(buffer);
-}
-
 void it_should_overwrite_the_last_element_when_buffer_is_full(void){
   ring_add(buffer, 1);
   ring_add(buffer, 2);
